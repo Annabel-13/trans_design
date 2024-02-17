@@ -15,7 +15,7 @@
     </style>
     <link rel="stylesheet" href="css/pong.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/termsOfUse.css' %}">
+<!--    <link rel="stylesheet" href="{% static 'css/termsOfUse.css' %}">-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"rel="stylesheet">
@@ -30,7 +30,7 @@
     <header>
         <div class="logo">
             <img alt="pong" class="logo_icon " src="images/pong.png">
-            <h1 id="title" class="title">PING PONG TRASCENDENCE</h1>
+            <h1 id="title" class="title">PING PONG TRANSCENDENCE</h1>
         </div>
         <div class="navbar">
             <ul>
@@ -52,87 +52,85 @@
                 </li>
                 <li class="list_anime">
                     <img alt="language" class="logo_icon nav_icon" src="images/language_icon.png">
-                    <a href="#">Languages</a>
+                    <a id="languageBtn" href="#">Languages</a>
                 </li>
             </ul>
         </div>
     </header>
 
-<!--    <div id="language_selector">-->
-<!--        <form action="/i18n/setlang/" method="post">-->
-<!--            {% csrf_token %}-->
-<!--            <input name="next" type="hidden" value="{{ redirect_to }}" />-->
-<!--            <select name="language">-->
-<!--                {% get_current_language as LANGUAGE_CODE %}-->
-<!--                {% get_available_languages as LANGUAGES %}-->
-<!--                {% for lang in LANGUAGES %}-->
-<!--                    <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected {% endif %}>-->
-<!--                        {{ lang.1 }}-->
-<!--                    </option>-->
-<!--                {% endfor %}-->
-<!--            </select>-->
-<!--            <input type="submit" value="Change Language">-->
-<!--        </form>-->
-<!--    </div>-->
+    <div id="language_selector">
+        <form action="/i18n/setlang/" method="post">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}" />
+            <select name="language">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% for lang in LANGUAGES %}
+                    <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected {% endif %}>
+                        {{ lang.1 }}
+                    </option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Change Language">
+        </form>
+    </div>
+<!--    start of registration form-->
+    <div class="non-game-element registration_form" id="reg">
 
-<!--    <div class="non-game-element" id="reg" style="background-color:grey; padding:2rem; border-radius: 15px; z-index: 1000;">-->
+        <form id="registrationForm" class="registration_style" method="post">
+            <label for="email">{% trans "Email:" %}</label>
+            <input
+                type="email"
+                id="email_reg"
+                name="email"
+                required
+                pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                title="{% trans 'Must be a valid email format.' %}"/><br><br>
 
-<!--        <form id="registrationForm" class="registration_style" method="post">-->
-<!--            <label for="email">{% trans "Email:" %}</label>-->
-<!--            <input-->
-<!--                type="email"-->
-<!--                id="email_reg"-->
-<!--                name="email"-->
-<!--                required-->
-<!--                pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"-->
-<!--                title="{% trans 'Must be a valid email format.' %}"/><br><br>-->
+            <label for="username">{% trans "Username:" %}</label>
+            <input
+                type="text"
+                id="username_reg"
+                name="name"
+                required
+                pattern="[a-zA-Z0-9]+"
+                title="{% trans 'Can only contain [a-z], [A-Z], [0-9].' %}"/><br><br>
 
-<!--            <label for="username">{% trans "Username:" %}</label>-->
-<!--            <input-->
-<!--                type="text"-->
-<!--                id="username_reg"-->
-<!--                name="name"-->
-<!--                required-->
-<!--                pattern="[a-zA-Z0-9]+"-->
-<!--                title="{% trans 'Can only contain [a-z], [A-Z], [0-9].' %}"/><br><br>-->
+            <label for="password">{% trans "Password:" %}</label>
+            <input
+                type="password"
+                id="password_reg"
+                required
+                pattern="(?=.*[^\d]).{6,}"
+                title="{% trans 'Must contain at least 6 characters, must not be the same as username, must not be all numeric, must not be common' %}"><br><br>
 
-<!--            <label for="password">{% trans "Password:" %}</label>-->
-<!--            <input-->
-<!--                type="password"-->
-<!--                id="password_reg"-->
-<!--                required-->
-<!--                pattern="(?=.*[^\d]).{6,}"-->
-<!--                title="{% trans 'Must contain at least 6 characters, must not be the same as username, must not be all numeric, must not be common' %}"><br><br>-->
+            <button type="submit">{% trans "Register" %}</button><br><br>
+        </form>
+        {% block register %}
+        <script type='module' src="{% static 'js/register.js' %}"></script>
+        {% endblock %}
 
-<!--            <button type="submit">{% trans "Register" %}</button><br><br>-->
-<!--        </form>-->
-<!--        {% block register %}-->
-<!--        <script type='module' src="{% static 'js/register.js' %}"></script>-->
-<!--        {% endblock %}-->
+        <form id="loginForm" method="post">
+            {% csrf_token %}
+            <label for="email">{% trans "Email:" %}</label>
+            <input type="email" id="email_login"><br><br>
 
-<!--        <form id="loginForm" method="post">-->
-<!--            {% csrf_token %}-->
-<!--            <label for="email">{% trans "Email:" %}</label>-->
-<!--            <input type="email" id="email_login"><br><br>-->
+            <label for="password">{% trans "Password:" %}</label>
+            <input type="password" id="password_login"><br><br>
+            <input type="checkbox" id="togglePasswordLogin">{% trans "Show Password" %}<br><br>
 
-<!--            <label for="password">{% trans "Password:" %}</label>-->
-<!--            <input type="password" id="password_login"><br><br>-->
-<!--            <input type="checkbox" id="togglePasswordLogin">{% trans "Show Password" %}<br><br>-->
-
-<!--            <button type="submit">{% trans "Login" %}</button>-->
-<!--        </form>-->
-<!--        <div id="twoFactorModal" style="display: none;">-->
-<!--            <div id="twoFactorModalContent">-->
-<!--                <span class="close">&times;</span>-->
-<!--                <p>{% trans "Please enter the 6 digit code from your authenticator app:" %}</p>-->
-<!--                <input type="text" id="twoFactorCode" required><br>-->
-<!--                <button id="submit2FACode">Submit</button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="non-game-element" >-->
-<!--        <button id="login42Button">{% trans "Login with 42 credentials" %}</button>-->
-<!--    </div>-->
+            <button type="submit">{% trans "Login" %}</button>
+        </form>
+        <div id="twoFactorModal" style="display: none;">
+            <div id="twoFactorModalContent">
+                <span class="close">&times;</span>
+                <p>{% trans "Please enter the 6 digit code from your authenticator app:" %}</p>
+                <input type="text" id="twoFactorCode" required><br>
+                <button id="submit2FACode">Submit</button>
+            </div>
+        </div>
+    </div>
+<!--end of registration form-->
 
 <!--    <div id="playPongDiv" style="display: none; text-align: center;">-->
 <!--        <input type="text" id="player2NameInput" placeholder="Enter Player 2's name"></input><br>-->
@@ -899,11 +897,6 @@
                 </div>
             </div>
     </div>
-
-<!--                <div class="non-game-element" style="color: #595959;font-size: 14px;font-family: Arial;padding-top:16px;">-->
-<!--                These terms of use were created using Termly's <a style="color: rgb(48, 48, 241) !important;" href="https://termly.io/products/terms-and-conditions-generator/">Terms and Conditions Generator</a>.-->
-<!--                </div>-->
-<!--        </div>-->
 
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.0/build/qrcode.min.js"></script>
     <script type="text/javascript">

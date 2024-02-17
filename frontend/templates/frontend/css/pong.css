@@ -148,7 +148,7 @@ ul li img {
 
 .terms_style {
 	display: none;
-	z-index: 30;
+	z-index: 100;
 	width: 80%;
 	height: auto;
 	background-color: darkslateblue;
@@ -180,24 +180,86 @@ ul li img {
 	font-weight: bold; /* Optionally, make the arrow bold for more emphasis */
 	color: white;
 }
+/*language section*/
+#language_selector{
+	display: none;
+	width: 30%;
+	height: auto;
+	background-color: rgba(72, 61, 139, 0.5);
+	padding: 20px;
+	margin: 10px auto;
+	font-size: 24px; /* Adjust the font size to make the arrow thicker */
+	font-weight: bold; /* Optionally, make the arrow bold for more emphasis */
+	color: white;
+	border: black 7px solid;
+	text-align: center;
+}
 
+input[type="submit"] {
+	background-color: darkslateblue;
+	color: white; /* White text color */
+	padding: 10px 20px; /* Padding */
+	border: none; /* Remove border */
+	cursor: pointer; /* Change cursor to pointer on hover */
+	border-radius: 5px; /* Rounded corners */
+	margin-top: 10px;
+}
+
+/* Style for submit input button on hover */
+input[type="submit"]:hover {
+	background-color: black;
+}
+
+select {
+	width: 100%; /* Set the width to fill the container */
+	padding: 10px; /* Padding */
+	border: 1px solid #ccc; /* Add border */
+	border-radius: 5px; /* Rounded corners */
+	background-color: rgba(110, 100, 180, 0.5); /* Light gray background color */
+	text-align: center;
+}
+
+/* Style for options in select dropdown on hover */
+select:hover {
+	border-color: #999; /* Darker border color on hover */
+}
+
+/* Style for options in select dropdown when clicked */
+select:focus {
+	border-color: #555; /* Dark border color when clicked */
+	outline: none; /* Remove default outline */
+}
+
+/*end of language section*/
+
+/*registration form */
+.registration_form {
+
+	height: auto;
+	width: 30%;
+	margin: 1% 10%;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: white;
+	padding: 10px 20px;
+}
+/*end of registration form*/
 /*#menu {*/
 /*	position: absolute;*/
 /*	top:1rem;*/
 /*	left: 1rem;*/
 /*}*/
 
-button {
-	background-color: rgba(255, 255, 255, 0.5);
-	font-size: 2rem;
-	position: relative;
-	padding: 2rem;
-	color:black;
-	font-weight: 900;
-	font-family: 'Press Start 2P', cursive;
-	margin: 2.5rem;
-	border-radius: 15px;
-}
+/*button {*/
+/*	background-color: rgba(255, 255, 255, 0.5);*/
+/*	font-size: 2rem;*/
+/*	position: relative;*/
+/*	padding: 2rem;*/
+/*	color:black;*/
+/*	font-weight: 900;*/
+/*	font-family: 'Press Start 2P', cursive;*/
+/*	margin: 2.5rem;*/
+/*	border-radius: 15px;*/
+/*}*/
 
 .menu {
 	background-color: rgba(255, 255, 255, 0.5);
