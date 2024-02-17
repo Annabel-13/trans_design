@@ -146,6 +146,11 @@ ul li img {
 	/*margin-left: 40%;*/
 }
 
+.terms_style {
+	display: none;
+	z-index: 30;
+}
+
 
 /*#menu {*/
 /*	position: absolute;*/
