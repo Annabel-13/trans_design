@@ -166,6 +166,21 @@ ul li img {
 	text-decoration: underline;
 }
 
+.scrollToTopBtn {
+	display: block; /* Initially hide the button */
+	/*height: 5px;*/
+	/*width: 200px;*/
+	position: fixed; /* Position the button relative to the viewport */
+	z-index: 999; /* Ensure the button appears above other content */
+	background-color: rgba(72, 61, 139, 0.5);
+	border-radius: 30px;
+	left: 1%;
+	top: 80%;
+	font-size: 24px; /* Adjust the font size to make the arrow thicker */
+	font-weight: bold; /* Optionally, make the arrow bold for more emphasis */
+	color: white;
+}
+
 /*#menu {*/
 /*	position: absolute;*/
 /*	top:1rem;*/

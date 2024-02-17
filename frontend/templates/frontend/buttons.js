@@ -6,3 +6,16 @@ document.getElementById("termsOfUseButton").addEventListener("click", function()
             // window.location.href = uri;
        });
 //end of terms of use
+
+//button for scroll
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    var divContent = document.getElementById("termsOfUseContent");
+}
+
+function scrollToTop() {
+    document.body.scrollTop = 0; /* For Safari */
+    document.documentElement.scrollTop = 0; /* For Chrome, Firefox, IE, and Opera */
+}
+//end button for scroll
