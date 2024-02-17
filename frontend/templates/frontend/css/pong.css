@@ -94,7 +94,7 @@ ul {
 
 }
 
-ul li {
+.list_anime {
 	display: inline-block;
 	margin-left: 5%;
 	cursor: pointer;
@@ -103,7 +103,7 @@ ul li {
 
 }
 
-ul li:hover {
+.list_anime:hover {
 	height: 65px;
 
 }
@@ -149,8 +149,22 @@ ul li img {
 .terms_style {
 	display: none;
 	z-index: 30;
+	width: 80%;
+	height: auto;
+	background-color: darkslateblue;
+	border: black 7px solid;
+	color: white;
+	margin: 0 auto;
 }
 
+.terms_style a {
+	text-decoration: none;
+	color: white;
+}
+
+.terms_style a:hover {
+	text-decoration: underline;
+}
 
 /*#menu {*/
 /*	position: absolute;*/
