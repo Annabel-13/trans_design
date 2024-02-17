@@ -1,7 +1,16 @@
 // terms of use
 document.getElementById("termsOfUseButton").addEventListener("click", function() {
     let content = document.getElementById("termsOfUseContent");
-            content.style.display = content.style.display === "none" ? "block" : "none";
+            // content.style.display = content.style.display === "none" ? "block" : "none";
+            if (content.style.display === "none")
+            {
+                content.style.display = "block";
+                // content.style.position = "absolute";
+            }
+            else {
+                content.style.display = "none"
+            }
+
        });
 //end of terms of use
 
