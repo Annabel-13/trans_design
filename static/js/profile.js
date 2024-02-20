@@ -179,7 +179,7 @@ function markNotificationsAsRead(notificationId) {
     })
     .catch(error => {
         console.error('Error MarkNotification:', error);
-    
+
     });
 }
 
@@ -205,6 +205,11 @@ function displayUserProfile(data) {
     document.getElementById('gamesTied').textContent = gamesTied;
 
     document.getElementById('profileSection').style.display = 'block';
+    // profile nav bar
+    document.getElementById('pongBtnNav').style.display = 'inline-block';
+    document.getElementById('hangmanBtnNav').style.display = 'inline-block';
+    document.getElementById('settingsBtnNav').style.display = 'inline-block';
+    // end of profile nav bar
     document.getElementById('loginForm').style.display = 'none';
     document.getElementById('registrationForm').style.display = 'none';
     document.getElementById('reg').style.opacity = 0;
@@ -374,7 +379,7 @@ function deleteAccount() {
         console.log(translate('No access token found. You are not logged in!'));
         return;
     }
-    
+
     //Confirm delete
     if (!confirm(translate('Are you sure you want to delete your account?\nThis cannot be reversed and all your data will be lost!'))) {
         return;

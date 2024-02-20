@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content= "width=device-width, initial-scale=1.0">
-    <title>TRASCENDENCE PONG GAME</title>
+    <title>TRANSCENDENCE PONG GAME</title>
     <style>
         canvas {
             background: #000;
@@ -54,6 +54,19 @@
                     <img alt="language" class="logo_icon nav_icon" src="images/language_icon.png">
                     <a id="languageBtn" href="#">Languages</a>
                 </li>
+<!--                profile menu-->
+                <li class="list_anime" id="pongBtnNav">
+                    <img alt="ping pong" class="logo_icon nav_icon profile_icon" src="images/ball.png">
+                    <a id="pongButns" href="#">Ping Pong</a>
+                </li>
+                <li class="list_anime" id="hangmanBtnNav">
+                    <img alt="hangman" class="logo_icon nav_icon profile_icon" src="images/hangman.png">
+                    <a id="languageBtn" href="#">Hangman</a>
+                </li>
+                <li class="list_anime" id="settingsBtnNav">
+                    <img alt="User settings" class="logo_icon nav_icon" src="images/settings.png">
+                    <a id="profileSettingsBtn" href="#">User settings</a>
+                </li>
             </ul>
         </div>
     </header>
@@ -75,89 +88,92 @@
         </form>
     </div>
 <!--    start of registration form-->
-    <div class="non-game-element registration_form" id="reg">
+<!--    <div class="non-game-element registration_form" id="reg">-->
 
-        <form id="registrationForm" class="registration_style" method="post">
-            <label for="email">{% trans "Email:" %}</label>
-            <input
-                type="email"
-                id="email_reg"
-                name="email"
-                required
-                pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
-                title="{% trans 'Must be a valid email format.' %}"/><br><br>
+<!--        <form id="registrationForm" class="registration_style" method="post">-->
+<!--            <label for="email">{% trans "Email:" %}</label>-->
+<!--            <input-->
+<!--                type="email"-->
+<!--                id="email_reg"-->
+<!--                name="email"-->
+<!--                required-->
+<!--                pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"-->
+<!--                title="{% trans 'Must be a valid email format.' %}"/><br><br>-->
 
-            <label for="username">{% trans "Username:" %}</label>
-            <input
-                type="text"
-                id="username_reg"
-                name="name"
-                required
-                pattern="[a-zA-Z0-9]+"
-                title="{% trans 'Can only contain [a-z], [A-Z], [0-9].' %}"/><br><br>
+<!--            <label for="username">{% trans "Username:" %}</label>-->
+<!--            <input-->
+<!--                type="text"-->
+<!--                id="username_reg"-->
+<!--                name="name"-->
+<!--                required-->
+<!--                pattern="[a-zA-Z0-9]+"-->
+<!--                title="{% trans 'Can only contain [a-z], [A-Z], [0-9].' %}"/><br><br>-->
 
-            <label for="password">{% trans "Password:" %}</label>
-            <input
-                type="password"
-                id="password_reg"
-                required
-                pattern="(?=.*[^\d]).{6,}"
-                title="{% trans 'Must contain at least 6 characters, must not be the same as username, must not be all numeric, must not be common' %}"><br><br>
+<!--            <label for="password">{% trans "Password:" %}</label>-->
+<!--            <input-->
+<!--                type="password"-->
+<!--                id="password_reg"-->
+<!--                required-->
+<!--                pattern="(?=.*[^\d]).{6,}"-->
+<!--                title="{% trans 'Must contain at least 6 characters, must not be the same as username, must not be all numeric, must not be common' %}"><br><br>-->
 
-            <button type="submit">{% trans "Register" %}</button><br><br>
-        </form>
-        {% block register %}
-        <script type='module' src="{% static 'js/register.js' %}"></script>
-        {% endblock %}
+<!--            <button type="submit">{% trans "Register" %}</button><br><br>-->
+<!--        </form>-->
+<!--        {% block register %}-->
+<!--        <script type='module' src="{% static 'js/register.js' %}"></script>-->
+<!--        {% endblock %}-->
 
-        <form id="loginForm" method="post">
-            {% csrf_token %}
-            <br>
-            <label for="email">{% trans "Email:" %}</label>
-            <input type="email" id="email_login"><br><br>
+<!--        <form id="loginForm" method="post">-->
+<!--            {% csrf_token %}-->
+<!--            <br>-->
+<!--            <label for="email">{% trans "Email:" %}</label>-->
+<!--            <input type="email" id="email_login"><br><br>-->
 
-            <label for="password">{% trans "Password:" %}</label>
-            <input type="password" id="password_login"><br><br>
-            <input type="checkbox" id="togglePasswordLogin">{% trans "Show Password" %}<br><br>
+<!--            <label for="password">{% trans "Password:" %}</label>-->
+<!--            <input type="password" id="password_login"><br><br>-->
+<!--            <input type="checkbox" id="togglePasswordLogin">{% trans "Show Password" %}<br><br>-->
 
-            <button type="submit">{% trans "Login" %}</button>
-        </form>
-        <div id="twoFactorModal" style="display: none;">
-            <div id="twoFactorModalContent">
-                <span class="close">&times;</span>
-                <p>{% trans "Please enter the 6 digit code from your authenticator app:" %}</p>
-                <input type="text" id="twoFactorCode" required><br>
-                <button id="submit2FACode">Submit</button>
-            </div>
-        </div>
-    </div>
+<!--            <button type="submit">{% trans "Login" %}</button>-->
+<!--        </form>-->
+<!--        <div id="twoFactorModal" style="display: none;">-->
+<!--            <div id="twoFactorModalContent">-->
+<!--                <span class="close">&times;</span>-->
+<!--                <p>{% trans "Please enter the 6 digit code from your authenticator app:" %}</p>-->
+<!--                <input type="text" id="twoFactorCode" required><br>-->
+<!--                <button id="submit2FACode">Submit</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 <!--end of registration form-->
 
-<!--    <div id="playPongDiv" style="display: none; text-align: center;">-->
-<!--        <input type="text" id="player2NameInput" placeholder="Enter Player 2's name"></input><br>-->
-<!--        <button id="playPongButtonLocal">{% trans "PLAY PONG LOCALLY" %}</button>-->
-<!--        <button id="playPongButtonAI">{% trans "PLAY PONG AGAINST COMPUTER" %}</button>-->
-<!--        <button id="playPongButtonRemote">{% trans "PLAY PONG REMOTELY" %}</button>-->
-<!--        <button id="changeBackgroundColour">{% trans "CHANGE BACKGROUND" %}</button>-->
-<!--        <button id="enablePowerups">{% trans "POWERUPS: OFF" %}</button>-->
-<!--        <canvas id="pongCanvas" width="800" height="600" style="display: none;"></canvas>-->
-<!--    </div>-->
-<!--    {% block login %}-->
-<!--    <script type='module' src="{% static 'js/login.js' %}"></script>-->
-<!--    {% endblock %}-->
+<!--    profile block-->
 
-<!--    {% block login42 %}-->
-<!--    <script type='module' src="{% static 'js/login42.js' %}"></script>-->
-<!--    {% endblock %}-->
 
-<!--    <div class="non-game-element" id="profileSection" style="display: none; padding: 1rem;">-->
+    <div class="non-game-element" id="profileSection">
 <!--        <form id = "avatarForm" enctype="multipart/form-data">-->
 <!--            <h1 style="padding: 1rem;">User Profile</h1>-->
-<!--            <img id="profileAvatar" src="" alt="Profile Avatar" style="background-color: rebeccapurple; width:150px; height:150px; border-radius: 15px; padding: 1rem;"/>-->
+<!--            <img id="profileAvatar" src="" alt="Profile Avatar"/>-->
 <!--            <label for="avatar">{% trans "Change Avatar:" %}</label>-->
 <!--            <input type="file" id="avatarInput" name="profile_avatar" accept="image/png, image/jpeg">-->
 <!--            <button style="font-size: 1rem; padding: 1rem;" id="uploadAvatarButton" type="submit">{% trans "Submit" %}</button>-->
 <!--        </form>-->
+
+        <form id="avatarForm" enctype="multipart/form-data">
+            <div class="avatar-section">
+                <h1>User Profile</h1>
+                <div class="avatar-container">
+                    <div class="photo_container">
+                        <img id="profileAvatar" src="images/default.jpg" alt="Profile Avatar"/>
+                    </div>
+                   <div class="avatarBtnContainer">
+                       <label for="avatar" class="upload-button">{% trans "Choose New Avatar" %}</label>
+                       <input type="file" id="avatarInput" name="profile_avatar" accept="image/png, image/jpeg">
+                       <button id="uploadAvatarButton" type="submit">{% trans "Submit" %}</button>
+                   </div>
+                </div>
+            </div>
+        </form>
+
 <!--        <div >-->
 <!--            <div style="background-color: grey; padding: 1rem; border-radius: 15px;">-->
 <!--                <p style="color:white; padding-top: 1rem;">{% trans "Email:" %} <span id="userEmail"></span></p>-->
@@ -169,34 +185,35 @@
 <!--            </div>-->
 
 <!--            <div id="matchHistoryContainer"></div>-->
+<div id="profileSettings">
+            <button id="changePasswordButton">{% trans "Change Password" %}</button>
+            <div id="changePasswordContainer" style="display: none;">
+                <form id="changePasswordForm">
+                    {% csrf_token %}
+                    <div id="changePasswordAlert"></div>
 
-<!--            <button id="changePasswordButton">{% trans "Change Password" %}</button>-->
-<!--            <div id="changePasswordContainer" style="display: none;">-->
-<!--                <form id="changePasswordForm">-->
-<!--                    {% csrf_token %}-->
-<!--                    <div id="changePasswordAlert"></div>-->
+                    <label for="oldPassword">{% trans "Old Password:" %}</label>
+                    <input type="password" id="oldPassword" required><br><br>
 
-<!--                    <label for="oldPassword">{% trans "Old Password:" %}</label>-->
-<!--                    <input type="password" id="oldPassword" required><br><br>-->
+                    <label for="newPassword">{% trans "New Password:" %}</label>
+                    <input type="password" id="newPassword" required
+                        pattern="(?=.*[^\d]).{6,}"
+                        title=" Must contain at least 6 characters, must not be the same as username, must not be all numeric, must not be common"><br><br>
 
-<!--                    <label for="newPassword">{% trans "New Password:" %}</label>-->
-<!--                    <input type="password" id="newPassword" required-->
-<!--                        pattern="(?=.*[^\d]).{6,}"-->
-<!--                        title=" Must contain at least 6 characters, must not be the same as username, must not be all numeric, must not be common"><br><br>-->
+                    <button type="submit">{% trans "Confirm?" %}</button>
+                </form>
+            </div>
+        <button id="enable2faButton">{% trans "Enable Two-Factor Authentication" %}</button>
+        <div id="twoFactorSetupContainer"></div>
 
-<!--                    <button type="submit">{% trans "Confirm?" %}</button>-->
-<!--                </form>-->
-<!--            </div>-->
+        <button id="deleteAccountButton">{% trans "Delete your Account" %}</button><br>
 
+        <button id="logoutButton">{% trans "Logout" %}</button><br>
+</div>
 <!--            <button id="viewUsersButton">{% trans "View all Users" %}</button>-->
 <!--                <div id="usersList" style="display:none;"></div>-->
 
-<!--            <button id="enable2faButton">{% trans "Enable Two-Factor Authentication" %}</button>-->
-<!--                <div id="twoFactorSetupContainer"></div>-->
 
-<!--            <button id="deleteAccountButton">{% trans "Delete your Account" %}</button><br>-->
-
-<!--            <button id="logoutButton">{% trans "Logout" %}</button><br>-->
 <!--        </div>-->
 <!--    </div>-->
 <!--    {% block profile %}-->
@@ -210,6 +227,44 @@
 <!--    {% block pong %}-->
 <!--    <script type='module' src="{% static 'js/pong.js' %}"></script>-->
 <!--    {% endblock %}-->
+<!--    pong buttons-->
+    <div id="pongMenu" class="pong_menu">
+          <ul>
+             <li>
+                 <input type="text" id="player2NameInput" placeholder="Enter Player 2's name"></input><br>
+             </li>
+             <li>
+                    <button id="playPongButtonLocal">{% trans "PLAY PONG LOCALLY" %}</button>
+                </li>
+                <li>
+                    <button id="playPongButtonAI">{% trans "PLAY PONG AGAINST COMPUTER" %}</button>
+                </li>
+                <li>
+                    <button id="playPongButtonRemote">{% trans "PLAY PONG REMOTELY" %}</button>
+                </li>
+                <li id="pongSettings">
+                    Pong Settings:
+                    <ul>
+                        <li><button id="changeBackgroundColour">{% trans "CHANGE BACKGROUND" %}</button></li>
+                        <li><button id="enablePowerups">{% trans "POWERUPS: OFF" %}</button></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--    pong settings list-->
+        <div id="playPongDiv">
+            <canvas id="pongCanvas" width="800" height="600"></canvas>
+        </div>
+
+        <!--    end of pong buttons-->
+        <!--    {% block login %}-->
+        <!--    <script type='module' src="{% static 'js/login.js' %}"></script>-->
+        <!--    {% endblock %}-->
+
+        <!--    {% block login42 %}-->
+        <!--    <script type='module' src="{% static 'js/login42.js' %}"></script>-->
+        <!--    {% endblock %}-->
+<!--end of profile block-->
 
 <!--button for scrolling to top-->
         <div class="non-game-element terms_style" id="termsOfUseContent">

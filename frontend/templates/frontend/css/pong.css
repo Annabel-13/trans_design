@@ -67,6 +67,13 @@ header {
 	padding: 2px;
 }
 
+.profile_icon {
+	width: 37px;
+	font-weight: bold;
+	/*overflow: hidden;*/
+	/*height: 47px;*/
+}
+
 .logo h1 {
 	margin-left: 5%;
 	font-size: 80%;
@@ -74,6 +81,7 @@ header {
 
 .title {
 	color: white;
+
 }
 
 .navbar {
@@ -283,101 +291,308 @@ select:focus {
 /*	border-radius: 15px;*/
 /*}*/
 
-.menu {
-	background-color: rgba(255, 255, 255, 0.5);
-	font-size: 2rem;
-	position: relative;
-	padding: 2rem;
-	color:black;
-	font-weight: 900;
-	font-family: 'Press Start 2P', cursive;
-	margin: 2.5rem;
-	border-radius: 15px;
+/*profile styles*/
+
+#playPongDiv {
+	display: none;
+	text-align: center;
 }
 
-.menu:hover {
-	color: rebeccapurple;
-	font-size: 3rem;
+/*#profileSection {*/
+/*	display: block;*/
+/*	padding: 1rem;"*/
+/*}*/
+
+
+
+/*#profileAvatar {*/
+/*	background-color: rebeccapurple;*/
+/*	width:50%;*/
+/*	height:50%;*/
+/*	border-radius: 15px;*/
+/*	padding: 1rem;*/
+/*}*/
+
+#avatarForm {
+	display: flex;
+	align-items: flex-start; /* Align items to the start of the cross axis (top) */
+	max-width: 500px;
+	margin: 40px;
+}
+
+.avatar-section {
+	flex: 1; /* Take up remaining space */
+	background-color: rgba(0, 0, 0, 0.7);
+	padding: 20px;
+	color: white;
+}
+
+.avatar-container {
+	position: relative;
+	margin-bottom: 0;
+}
+
+#profileAvatar {
+	max-width: 100%;
+	/*width: auto;*/
+	max-height: 100%;
+	border: 3px solid #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	color: white;
+	/*background-image: url('../images/default.jpg');*/
+	background-size: cover;
+	/*padding-bottom: 40px;*/
+}
+
+.photo_container {
+	display: inline-block;
+	margin: 10px;
+	text-align: center;
+}
+
+#profileAvatar img {
+
+}
+
+.upload-button {
+	/*position: absolute;*/
+	bottom: -30px; /* Position the button below the avatar */
+	/*left: 50%;*/
+	/*transform: translateX(-50%);*/
+	background-color: #6f42c1; /* Dark purple background color */
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 5px;
 	cursor: pointer;
 }
 
-				.screen{
-					display:flex;
-					justify-content: center;
-					align-items: center;
-				}
+input[type="file"] {
+	display: none;
+}
 
-				.screen img {
-					top: 15%;
-					width: 50vw;
-					max-height: 100vh;
-					position: absolute;
-				}
+.buttons {
+	display: flex;
+	justify-content: center; /* Center buttons horizontally */
+	margin-top: 20px; /* Add some space between avatar section and buttons */
+}
 
-				.foreground {
-					z-index: 100;
-					position: absolute;
-					bottom: 0;
-					width: 100vw;
-					justify-content: center;
-					align-items: center;
+#uploadAvatarButton {
+	font-size: 1rem;
+	padding: 10px 40px;
+	background-color: #6f42c1; /* Dark purple background color */
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin: 10px;
+}
 
-				}
+#uploadAvatarButton:hover {
+	background-color: #5a3b78; /* Darker purple background color on hover */
+}
 
-				.full-screen{
-					width: 100vw;
-					height: 100vh;
-					display: flex;
-					justify-content: center;
-					align-items: center;
-				}
+.avatarBtnContainer {
+	display: flex;
+	justify-content: space-between; /* Distribute items evenly along the main axis */
+	align-items: center; /* Align items vertically */
+	width: 100%;
+	text-align: center;
+	/*padding-top: 40px;*/
+}
 
-				.full-screen img {
-					top:15%;
-					width: 100%;
-					max-width: 100vw;
-				}
+/*.avatarBtnContainer:only-child {*/
+/*	padding: 10px 10px; !* Adjust the padding *!*/
+/*	width: 50%;*/
+/*	margin: 10px 50px;*/
+/*}*/
 
-				.nav_no_show {
-					display: none;
-				}
+/*Pong settings*/
+#pongCanvas {
+	 display: none;
+}
 
-				.nav {
-					z-index: 400;
-					width: 95%;
-					height: 95%;
-					position: absolute;
-					display: none;
-					padding: 3rem;
-					text-decoration: none;
-					background-color: hsl(270, 50%, 40%,0.5);
-				}
+#pongMenu {
+	display: none;
+	width: 30%;
+	height: auto;
+	background-color: rgba(72, 61, 139, 0.5);
+	padding: 20px;
+	margin: 10px auto;
+	font-size: 20px; /* Adjust the font size to make the arrow thicker */
+	font-weight: bold; /* Optionally, make the arrow bold for more emphasis */
+	color: white;
+	border: rgba(0, 0, 0, 0.7) 7px solid;
+	text-align: center;
+	z-index: 115;
 
-				.nav li {
-					color: white;
-					font-size: 10rem;
-					padding: 1.5rem;
-				}
+	position: absolute;
+	top: 13%;
+	left: 50%;
+}
 
-				.nav li:hover {
-					color: black;
-				}
+#pongMenu li {
+	margin-top: 10px;
+}
 
-				@media screen and (min-width: 3051px) {
+#pongMenu li button{
+	background-color: rgba(0, 0, 0, 0.7);
+	color: white;
+	padding: 10px;
+	text-align: center;
+	border-radius: 10%;
+}
 
-					.menu {
-						z-index: 30;
-					}
+#pongMenu li button:hover{
+	background-color: darkslateblue;
+}
 
-					.full-screen {
-						top:0;
-					}
+#pongSettings ul{
+	padding: 0;
+}
 
-					.full-screen img{
-						top:0;
-						width: 100%; /* Make the image take the full width of the screen */
-						height: auto; /* Maintain the image's aspect ratio */
-					}
-				}
+#profileSettings {
+	display: none;
+	width: 30%;
+	height: auto;
+	background-color: rgba(72, 61, 139, 0.5);
+	padding: 20px;
+	margin: 10px auto;
+	font-size: 20px; /* Adjust the font size to make the arrow thicker */
+	font-weight: bold; /* Optionally, make the arrow bold for more emphasis */
+	color: white;
+	border: rgba(0, 0, 0, 0.7) 7px solid;
+	text-align: center;
+	z-index: 115;
 
-/*END*/
+	position: absolute;
+	top: 10%;
+	left: 65%;
+}
+
+#profileSettings button {
+	background-color: rgba(0, 0, 0, 0.7);
+	color: white;
+	padding: 10px;
+	text-align: center;
+	border-radius: 10%;
+	margin-top: 5px;
+}
+
+#profileSettings button:hover {
+	background-color: darkslateblue;
+}
+
+
+#pongBtnNav {
+	display: inline-block;
+}
+
+#hangmanBtnNav {
+	display: inline-block;
+}
+
+#settingsBtnNav {
+	display: inline-block;
+}
+
+/*end of profile styles*/
+
+/*.menu {*/
+/*	background-color: rgba(255, 255, 255, 0.5);*/
+/*	font-size: 2rem;*/
+/*	position: relative;*/
+/*	padding: 2rem;*/
+/*	color:black;*/
+/*	font-weight: 900;*/
+/*	font-family: 'Press Start 2P', cursive;*/
+/*	margin: 2.5rem;*/
+/*	border-radius: 15px;*/
+/*}*/
+
+/*.menu:hover {*/
+/*	color: rebeccapurple;*/
+/*	font-size: 3rem;*/
+/*	cursor: pointer;*/
+/*}*/
+
+/*				.screen{*/
+/*					display:flex;*/
+/*					justify-content: center;*/
+/*					align-items: center;*/
+/*				}*/
+
+/*				.screen img {*/
+/*					top: 15%;*/
+/*					width: 50vw;*/
+/*					max-height: 100vh;*/
+/*					position: absolute;*/
+/*				}*/
+
+/*				.foreground {*/
+/*					z-index: 100;*/
+/*					position: absolute;*/
+/*					bottom: 0;*/
+/*					width: 100vw;*/
+/*					justify-content: center;*/
+/*					align-items: center;*/
+
+/*				}*/
+
+/*				.full-screen{*/
+/*					width: 100vw;*/
+/*					height: 100vh;*/
+/*					display: flex;*/
+/*					justify-content: center;*/
+/*					align-items: center;*/
+/*				}*/
+
+/*				.full-screen img {*/
+/*					top:15%;*/
+/*					width: 100%;*/
+/*					max-width: 100vw;*/
+/*				}*/
+
+/*				.nav_no_show {*/
+/*					display: none;*/
+/*				}*/
+
+/*				.nav {*/
+/*					z-index: 400;*/
+/*					width: 95%;*/
+/*					height: 95%;*/
+/*					position: absolute;*/
+/*					display: none;*/
+/*					padding: 3rem;*/
+/*					text-decoration: none;*/
+/*					background-color: hsl(270, 50%, 40%,0.5);*/
+/*				}*/
+
+/*				.nav li {*/
+/*					color: white;*/
+/*					font-size: 10rem;*/
+/*					padding: 1.5rem;*/
+/*				}*/
+
+/*				.nav li:hover {*/
+/*					color: black;*/
+/*				}*/
+
+/*				@media screen and (min-width: 3051px) {*/
+
+/*					.menu {*/
+/*						z-index: 30;*/
+/*					}*/
+
+/*					.full-screen {*/
+/*						top:0;*/
+/*					}*/
+
+/*					.full-screen img{*/
+/*						top:0;*/
+/*						width: 100%; !* Make the image take the full width of the screen *!*/
+/*						height: auto; !* Maintain the image's aspect ratio *!*/
+/*					}*/
+/*				}*/
+
+/*!*END*!*/

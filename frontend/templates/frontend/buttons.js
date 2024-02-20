@@ -33,3 +33,24 @@ document.getElementById("languageBtn").addEventListener("click", function() {
     content.style.display = content.style.display === "none" ? "block" : "none";
 });
 //end of language
+
+//pong buttons
+document.getElementById("pongButns").addEventListener("click", function() {
+    let content = document.getElementById("pongMenu");
+    content.style.display = content.style.display === "none" ? "block" : "none";
+    let content1 = document.getElementById("pongSettingsList");
+    content1.style.display = content.style.display === "none" ? "block" : "none";
+});
+
+document.getElementById("pongButns").addEventListener("click", function() {
+    let content = document.getElementById("pongSettings");
+    content.style.display = content.style.display === "none" ? "block" : "none";
+});
+//end of pong buttons
+
+//profileSettings
+document.getElementById("profileSettingsBtn").addEventListener("click", function() {
+    let content = document.getElementById("profileSettings");
+    content.style.display = content.style.display === "none" ? "block" : "none";
+});
+//end of profile settings
