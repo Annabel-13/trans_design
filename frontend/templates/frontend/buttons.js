@@ -54,3 +54,10 @@ document.getElementById("profileSettingsBtn").addEventListener("click", function
     content.style.display = content.style.display === "none" ? "block" : "none";
 });
 //end of profile settings
+
+//tournament
+document.getElementById("playPongButtonTournament").addEventListener("click", function() {
+    let content = document.getElementById("tournamentContainer");
+    content.style.display = content.style.display === "none" ? "block" : "none";
+});
+//end of tournament

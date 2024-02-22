@@ -6,16 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content= "width=device-width, initial-scale=1.0">
     <title>TRANSCENDENCE PONG GAME</title>
-    <style>
-        canvas {
-            background: #000;
-            display: block;
-            margin: auto;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/pong.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<!--    <link rel="stylesheet" href="{% static 'css/termsOfUse.css' %}">-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"rel="stylesheet">
@@ -34,10 +27,6 @@
         </div>
         <div class="navbar">
             <ul>
-                <li class="list_anime">
-                    <img alt="home" class="logo_icon nav_icon non-game-element" src="images/home_icon.png">
-                    <a  href="#">Home</a>
-                </li>
                 <li class="list_anime">
                     <div id="termsOfUseButton">
                     <img alt="terms" class="logo_icon nav_icon" src="images/terms.png">
@@ -62,6 +51,11 @@
                 <li class="list_anime" id="hangmanBtnNav">
                     <img alt="hangman" class="logo_icon nav_icon profile_icon" src="images/hangman.png">
                     <a id="languageBtn" href="#">Hangman</a>
+                </li>
+                <li class="list_anime" id="tournamentBtnNav">
+                    <img alt="tournament" class="logo_icon nav_icon profile_icon" src="images/tournament.png">
+                    <a id="playPongButtonTournament" href="#">Tournament</a>
+<!--                    <a id="playPongButtonTournament" href="#">{% trans "Tournament" %}</a>-->
                 </li>
                 <li class="list_anime" id="settingsBtnNav">
                     <img alt="User settings" class="logo_icon nav_icon" src="images/settings.png">
@@ -147,17 +141,7 @@
 <!--end of registration form-->
 
 <!--    profile block-->
-
-
-    <div class="non-game-element" id="profileSection">
-<!--        <form id = "avatarForm" enctype="multipart/form-data">-->
-<!--            <h1 style="padding: 1rem;">User Profile</h1>-->
-<!--            <img id="profileAvatar" src="" alt="Profile Avatar"/>-->
-<!--            <label for="avatar">{% trans "Change Avatar:" %}</label>-->
-<!--            <input type="file" id="avatarInput" name="profile_avatar" accept="image/png, image/jpeg">-->
-<!--            <button style="font-size: 1rem; padding: 1rem;" id="uploadAvatarButton" type="submit">{% trans "Submit" %}</button>-->
-<!--        </form>-->
-
+    <div class="profile_block">
         <form id="avatarForm" enctype="multipart/form-data">
             <div class="avatar-section">
                 <h1>User Profile</h1>
@@ -173,18 +157,28 @@
                 </div>
             </div>
         </form>
+<!--match history-->
+        <div >
+            <div class="matchHistoryContainer">
+                <p>{% trans "Email:" %} <span id="userEmail"></span></p>
+                <p>{% trans "Username:" %} <span id="userName"></span></p>
+                <div class="columns">
+                    <p>{% trans "Games Played:" %} <span id="gamesPlayed"></span></p>
+                    <p>{% trans "Games Won:" %} <span id="gamesWon"></span></p>
+                    <p>{% trans "Games Lost:" %} <span id="gamesLost"></span></p>
+                    <p>{% trans "Games Tied:" %} <span id="gamesTied"></span></p>
+                </div>
+        </div>
 
-<!--        <div >-->
-<!--            <div style="background-color: grey; padding: 1rem; border-radius: 15px;">-->
-<!--                <p style="color:white; padding-top: 1rem;">{% trans "Email:" %} <span id="userEmail"></span></p>-->
-<!--                <p style="color:white; padding-top: 1rem;"><b>{% trans "Username:" %}</b> <span id="userName"></span></p>-->
-<!--                <p style="color:white; padding-top: 1rem;"><b>{% trans "Games Played:" %}</b> <span id="gamesPlayed"></span></p>-->
-<!--                <p style="color:white; padding-top: 1rem;"><b>{% trans "Games Won:" %}</b> <span id="gamesWon"></span></p>-->
-<!--                <p style="color:white; padding-top: 1rem;"><b>{% trans "Games Lost:" %}</b> <span id="gamesLost"></span></p>-->
-<!--                <p style="color:white; padding-top: 1rem;"><b>{% trans "Games Tied:" %}</b> <span id="gamesTied"></span></p>-->
-<!--            </div>-->
+            <div id="matchHistoryContainer"></div>
+            <!--end of match history-->
+    </div>
+        <div class="userListContainer">
+                    <button id="viewUsersButton">{% trans "View all Users" %}</button>
+                        <div id="usersList"></div>
+        </div>
+    </div>
 
-<!--            <div id="matchHistoryContainer"></div>-->
 <div id="profileSettings">
             <button id="changePasswordButton">{% trans "Change Password" %}</button>
             <div id="changePasswordContainer" style="display: none;">
@@ -210,10 +204,6 @@
 
         <button id="logoutButton">{% trans "Logout" %}</button><br>
 </div>
-<!--            <button id="viewUsersButton">{% trans "View all Users" %}</button>-->
-<!--                <div id="usersList" style="display:none;"></div>-->
-
-
 <!--        </div>-->
 <!--    </div>-->
 <!--    {% block profile %}-->
@@ -265,6 +255,21 @@
         <!--    <script type='module' src="{% static 'js/login42.js' %}"></script>-->
         <!--    {% endblock %}-->
 <!--end of profile block-->
+
+<!--tournament-->
+    <div id="tournamentContainer" class=" tournamentContainer">
+        <div id="tournamentControls">
+            <input type="text" id="tournamentNameInput" placeholder="Enter Tournament Name"><br>
+            <button id="createTournamentButton">{% trans "Create a Tournament" %}</button><br>
+            <input type="text" id="tournamentIDInput" placeholder="Enter Tournament ID"><br>
+            <button id="joinTournamentButton">{% trans "Join Tournament" %}</button>
+            <input type="text" id="tournamentViewInput" placeholder="Enter Tournament ID"><br>
+            <button id="viewTournamentButton">{% trans "View Tournament" %}</button>
+            <div id="tournamentView"></div>
+        </div>
+        <div id="tournamentMatchContainer"></div>
+    </div>
+<!--    end of tournament-->
 
 <!--button for scrolling to top-->
         <div class="non-game-element terms_style" id="termsOfUseContent">
