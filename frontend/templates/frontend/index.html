@@ -85,102 +85,102 @@
         </form>
     </div>
 <!--    start of registration form-->
-    <div class="non-game-element registration_form" id="reg">
+<!--    <div class="non-game-element registration_form" id="reg">-->
 
-        <form id="registrationForm" class="registration_style" method="post">
-            <label for="email">{% trans "Email:" %}</label>
-            <input
-                type="email"
-                id="email_reg"
-                name="email"
-                required
-                pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
-                title="{% trans 'Must be a valid email format.' %}"/><br><br>
+<!--        <form id="registrationForm" class="registration_style" method="post">-->
+<!--            <label for="email">{% trans "Email:" %}</label>-->
+<!--            <input-->
+<!--                type="email"-->
+<!--                id="email_reg"-->
+<!--                name="email"-->
+<!--                required-->
+<!--                pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"-->
+<!--                title="{% trans 'Must be a valid email format.' %}"/><br><br>-->
 
-            <label for="username">{% trans "Username:" %}</label>
-            <input
-                type="text"
-                id="username_reg"
-                name="name"
-                required
-                pattern="[a-zA-Z0-9]+"
-                title="{% trans 'Can only contain [a-z], [A-Z], [0-9].' %}"/><br><br>
+<!--            <label for="username">{% trans "Username:" %}</label>-->
+<!--            <input-->
+<!--                type="text"-->
+<!--                id="username_reg"-->
+<!--                name="name"-->
+<!--                required-->
+<!--                pattern="[a-zA-Z0-9]+"-->
+<!--                title="{% trans 'Can only contain [a-z], [A-Z], [0-9].' %}"/><br><br>-->
 
-            <label for="password">{% trans "Password:" %}</label>
-            <input
-                type="password"
-                id="password_reg"
-                required
-                pattern="(?=.*[^\d]).{6,}"
-                title="{% trans 'Must contain at least 6 characters, must not be the same as username, must not be all numeric, must not be common' %}"><br><br>
+<!--            <label for="password">{% trans "Password:" %}</label>-->
+<!--            <input-->
+<!--                type="password"-->
+<!--                id="password_reg"-->
+<!--                required-->
+<!--                pattern="(?=.*[^\d]).{6,}"-->
+<!--                title="{% trans 'Must contain at least 6 characters, must not be the same as username, must not be all numeric, must not be common' %}"><br><br>-->
 
-            <button type="submit">{% trans "Register" %}</button><br><br>
-        </form>
-        {% block register %}
-        <script type='module' src="{% static 'js/register.js' %}"></script>
-        {% endblock %}
+<!--            <button type="submit">{% trans "Register" %}</button><br><br>-->
+<!--        </form>-->
+<!--        {% block register %}-->
+<!--        <script type='module' src="{% static 'js/register.js' %}"></script>-->
+<!--        {% endblock %}-->
 
-        <form id="loginForm" method="post">
-            {% csrf_token %}
-            <br>
-            <label for="email">{% trans "Email:" %}</label>
-            <input type="email" id="email_login"><br><br>
+<!--        <form id="loginForm" method="post">-->
+<!--            {% csrf_token %}-->
+<!--            <br>-->
+<!--            <label for="email">{% trans "Email:" %}</label>-->
+<!--            <input type="email" id="email_login"><br><br>-->
 
-            <label for="password">{% trans "Password:" %}</label>
-            <input type="password" id="password_login"><br><br>
-            <input type="checkbox" id="togglePasswordLogin">{% trans "Show Password" %}<br><br>
+<!--            <label for="password">{% trans "Password:" %}</label>-->
+<!--            <input type="password" id="password_login"><br><br>-->
+<!--            <input type="checkbox" id="togglePasswordLogin">{% trans "Show Password" %}<br><br>-->
 
-            <button type="submit">{% trans "Login" %}</button>
-        </form>
-        <div id="twoFactorModal" style="display: none;">
-            <div id="twoFactorModalContent">
-                <span class="close">&times;</span>
-                <p>{% trans "Please enter the 6 digit code from your authenticator app:" %}</p>
-                <input type="text" id="twoFactorCode" required><br>
-                <button id="submit2FACode">Submit</button>
-            </div>
-        </div>
-    </div>
+<!--            <button type="submit">{% trans "Login" %}</button>-->
+<!--        </form>-->
+<!--        <div id="twoFactorModal" style="display: none;">-->
+<!--            <div id="twoFactorModalContent">-->
+<!--                <span class="close">&times;</span>-->
+<!--                <p>{% trans "Please enter the 6 digit code from your authenticator app:" %}</p>-->
+<!--                <input type="text" id="twoFactorCode" required><br>-->
+<!--                <button id="submit2FACode">Submit</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 <!--end of registration form-->
 
 <!--    profile block-->
-<!--    <div class="profile_block">-->
-<!--        <form id="avatarForm" enctype="multipart/form-data">-->
-<!--            <div class="avatar-section">-->
-<!--                <h1>User Profile</h1>-->
-<!--                <div class="avatar-container">-->
-<!--                    <div class="photo_container">-->
-<!--                        <img id="profileAvatar" src="images/default.jpg" alt="Profile Avatar"/>-->
-<!--                    </div>-->
-<!--                   <div class="avatarBtnContainer">-->
-<!--                       <label for="avatar" class="upload-button">{% trans "Choose New Avatar" %}</label>-->
-<!--                       <input type="file" id="avatarInput" name="profile_avatar" accept="image/png, image/jpeg">-->
-<!--                       <button id="uploadAvatarButton" type="submit">{% trans "Submit" %}</button>-->
-<!--                   </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </form>-->
-<!--&lt;!&ndash;match history&ndash;&gt;-->
-<!--        <div >-->
-<!--            <div class="matchHistoryContainer">-->
-<!--                <p>{% trans "Email:" %} <span id="userEmail"></span></p>-->
-<!--                <p>{% trans "Username:" %} <span id="userName"></span></p>-->
-<!--                <div class="columns">-->
-<!--                    <p>{% trans "Games Played:" %} <span id="gamesPlayed"></span></p>-->
-<!--                    <p>{% trans "Games Won:" %} <span id="gamesWon"></span></p>-->
-<!--                    <p>{% trans "Games Lost:" %} <span id="gamesLost"></span></p>-->
-<!--                    <p>{% trans "Games Tied:" %} <span id="gamesTied"></span></p>-->
-<!--                </div>-->
-<!--        </div>-->
+    <div class="profile_block">
+        <form id="avatarForm" enctype="multipart/form-data">
+            <div class="avatar-section">
+                <h1>User Profile</h1>
+                <div class="avatar-container">
+                    <div class="photo_container">
+                        <img id="profileAvatar" src="images/default.jpg" alt="Profile Avatar"/>
+                    </div>
+                   <div class="avatarBtnContainer">
+                       <label for="avatar" class="upload-button">{% trans "Choose New Avatar" %}</label>
+                       <input type="file" id="avatarInput" name="profile_avatar" accept="image/png, image/jpeg">
+                       <button id="uploadAvatarButton" type="submit">{% trans "Submit" %}</button>
+                   </div>
+                </div>
+            </div>
+        </form>
+<!--match history-->
+        <div >
+            <div class="matchHistoryContainer">
+                <p>{% trans "Email:" %} <span id="userEmail"></span></p>
+                <p>{% trans "Username:" %} <span id="userName"></span></p>
+                <div class="columns">
+                    <p>{% trans "Games Played:" %} <span id="gamesPlayed"></span></p>
+                    <p>{% trans "Games Won:" %} <span id="gamesWon"></span></p>
+                    <p>{% trans "Games Lost:" %} <span id="gamesLost"></span></p>
+                    <p>{% trans "Games Tied:" %} <span id="gamesTied"></span></p>
+                </div>
+        </div>
 
-<!--            <div id="matchHistoryContainer"></div>-->
-<!--            &lt;!&ndash;end of match history&ndash;&gt;-->
-<!--    </div>-->
-<!--        <div class="userListContainer">-->
-<!--                    <button id="viewUsersButton">{% trans "View all Users" %}</button>-->
-<!--                        <div id="usersList"></div>-->
-<!--        </div>-->
-<!--    </div>-->
+            <div id="matchHistoryContainer"></div>
+            <!--end of match history-->
+    </div>
+        <div class="userListContainer">
+                    <button id="viewUsersButton">{% trans "View all Users" %}</button>
+                        <div id="usersList"></div>
+        </div>
+    </div>
 
 <!--profile end-->
 <div id="profileSettings">

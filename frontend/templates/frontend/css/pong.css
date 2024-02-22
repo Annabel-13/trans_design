@@ -26,6 +26,10 @@ body {
 	z-index: 1;
 }
 
+ol, ul {
+	list-style-type: none;
+}
+
 /*bland layout for background*/
 body:after {
 	content: "";
@@ -393,12 +397,6 @@ input[type="file"] {
 	/*padding-top: 40px;*/
 }
 
-/*.avatarBtnContainer:only-child {*/
-/*	padding: 10px 10px; !* Adjust the padding *!*/
-/*	width: 50%;*/
-/*	margin: 10px 50px;*/
-/*}*/
-
 /*Pong settings*/
 #pongCanvas {
 	 display: none;
@@ -477,7 +475,7 @@ input[type="file"] {
 
 
 #pongBtnNav, #hangmanBtnNav, #settingsBtnNav, #tournamentBtnNav{
-	display: none;
+	display: inline-block;
 }
 
 /*end of profile styles*/
@@ -633,12 +631,30 @@ input[type="file"] {
 }
 
 @media (min-width: 1025px) and (max-width: 1200px) {
-	/* CSS rules for screen sizes between 1025px and 1200px */
-	/*.registration_form {*/
-	/*	column-count: 2;*/
-	/*	column-gap: 20px;*/
-	/*	width: 80%;*/
-	/*}*/
+
+	.list_anime {
+		margin-left: 3%;
+	}
+
+	.navbar {
+		width: 80%;
+	}
+
+	.avatar-section {
+		flex: inherit;
+	}
+
+	.userListContainer {
+		margin-right: 10px;
+	}
+
+	#profileAvatar {
+		max-width: 80%;
+	}
+
+	#pongMenu {
+		width: 40%;
+	}
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -651,10 +667,41 @@ input[type="file"] {
 		margin-top: 10px;
 		font-size: 18px;
 	}
+
+	.navbar {
+		width: 100%;
+	}
+
+	#smallNavbar {
+		padding-left: 0;
+	}
+
+	.list_anime {
+		margin-left: 2%;
+	}
+
+	#profileAvatar {
+		max-width: 80%;
+	}
+
+	.userListContainer {
+		margin-right: 10px;
+	}
+
+	#viewUsersButton {
+		height: auto;
+	}
+
+	ul li a {
+		font-size: 14px;
+	}
 }
 /*481px - 768px*/
-@media (max-width: 768px) {
+@media (max-width: 819px) {
 
+	.header {
+		width: 100%;
+	}
 
 	.navbar {
 		position: absolute;
@@ -724,5 +771,89 @@ input[type="file"] {
 		/*padding-top: 30px;*/
 	}
 
+	.avatar-section {
+		flex: none;
+		width: 80%;
+	}
+
+	#avatarForm
+	{
+		width: 70%;
+		margin-right: 0;
+		padding-right: 0;
+	}
+
+	#uploadAvatarButton {
+		padding: 10px 20px;
+	}
+
+	.upload-button {
+		padding: 10px 10px;
+	}
+
+	#viewUsersButton {
+		padding: 0;
+		margin-right: 10px;
+		font-size: 14px;
+		text-align: center;
+	}
+
+	input[type="submit"] {
+		/*padding: 10px 20px; !* Padding *!*/
+		font-size: 14px;
+	}
+
+	#pongMenu {
+		width: 50%;
+		left: 40%;
+	}
+
+	.tournamentContainer {
+		width: 50%;
+		left: 40%;
+	}
+
+	#profileSettings {
+		width: 50%;
+		left: 40%;
+	}
+
+
+
+}
+
+@media (max-width: 768px) {
+	ul li a {
+		margin-left: 15px;
+	}
+
+	.profile_block {
+		display: inherit;
+
+		/*width: 40%;*/
+	}
+
+	#avatarForm {
+		max-width: 70%;
+		margin: 10px auto;
+	}
+
+	header {
+		width: 100%;
+	}
+
+	.matchHistoryContainer {
+		margin: 20px auto;
+	}
+
+	.userListContainer {
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	#viewUsersButton {
+		left: 50%;
+		margin: 10px;
+	}
 }
 
