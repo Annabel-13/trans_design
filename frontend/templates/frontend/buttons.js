@@ -61,3 +61,10 @@ document.getElementById("playPongButtonTournament").addEventListener("click", fu
     content.style.display = content.style.display === "none" ? "block" : "none";
 });
 //end of tournament
+
+// small menu
+document.getElementById("menuBtn").addEventListener("click", function() {
+    let content = document.getElementById("smallNavbar");
+    content.style.display = content.style.display === "none" ? "block" : "none";
+});
+//end of small menu
